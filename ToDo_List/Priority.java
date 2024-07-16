@@ -3,7 +3,7 @@ public enum Priority {
     MEDIUM(2),
     HIGH(3);
 
-    private int level;
+    final private int level;
 
     Priority(int level) {
         this.level = level;
@@ -14,24 +14,19 @@ public enum Priority {
     }
 
     public static Priority convert(int level) {
-        switch (level) {
-            case 3:
-                return HIGH;
-            case 2:
-                return MEDIUM;
-            default:
-                return LOW;
-        } 
+        return switch (level) {
+            case 3 -> HIGH;
+            case 2 -> MEDIUM;
+            default -> LOW;
+        }; 
     }
 
+    @Override
     public String toString() {
-        switch (level) {
-            case 3:
-                return "High";
-            case 2:
-                return "Medium";
-            default:
-                return "Low";
-        } 
+        return switch (level) {
+            case 3 -> "High";
+            case 2 -> "Medium";
+            default -> "Low";
+        }; 
     }
 }
